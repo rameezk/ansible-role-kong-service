@@ -1,2 +1,29 @@
 ---
-# tasks file for ansible-role-kong-service
+- name: Check if service exists
+  uri:
+    url: "{{KONG_ADMIN_URL}}/services/{{name}}?jwt={{KONG_JWT}}"
+    method: GET
+    status_code: 200, 404
+  register: service
+
+- name: Create service
+  uri:
+    url: "{{KONG_ADMIN_URL}}/services/?jwt={{KONG_JWT}}"
+    method: POST
+    body:
+      name: "{{name}}"
+      url: "{{url}}"
+    status_code: 201
+    body_format: json
+  when: result.status == 404
+
+- name: Update a service
+  uri:
+    url: "{{KONG_ADMIN_URL}}/services/{{name}}?jwt={{KONG_JWT}}"
+    method: PATCH
+    body:
+      name: "{{name}}"
+      url: "{{url}}"
+    body_format: json
+    status_code: 200
+  when: result.status == 200
