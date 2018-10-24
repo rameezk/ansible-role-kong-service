@@ -1,14 +1,14 @@
 ---
 - name: Check if service exists
   uri:
-    url: "{{kong_admin_url}}/services/{{name}}?jwt={{KONG_JWT}}"
+    url: "{{KONG_ADMIN_URL}}/services/{{name}}?jwt={{KONG_JWT}}"
     method: GET
     status_code: 200, 404
   register: service
 
 - name: Create service
   uri:
-    url: "{{kong_admin_url}}/services/?jwt={{kong_jwt}}"
+    url: "{{KONG_ADMIN_URL}}/services/?jwt={{kong_jwt}}"
     method: POST
     body:
       name: "{{name}}"
@@ -19,7 +19,7 @@
 
 - name: Update a service
   uri:
-    url: "{{kong_admin_url}}/services/{{name}}?jwt={{kong_jwt}}"
+    url: "{{KONG_ADMIN_URL}}/services/{{name}}?jwt={{kong_jwt}}"
     method: PATCH
     body:
       name: "{{name}}"
