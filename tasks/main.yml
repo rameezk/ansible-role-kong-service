@@ -19,7 +19,7 @@
 
 - name: Update a service
   uri:
-    url: "{{KONG_ADMIN_URL}}/services/{{name}}?jwt={{kong_jwt}}"
+    url: "{{KONG_ADMIN_URL}}/services/{{service.name}}?jwt={{kong_jwt}}"
     method: PATCH
     body:
       name: "{{service.name}}"
