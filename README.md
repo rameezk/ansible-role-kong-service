@@ -1,7 +1,9 @@
 KONG_SERVICE
 =========
 
-An Ansible Role for Managing Kong Services
+An Ansible Role for Managing Kong Services. 
+
+The service will be updated if it already exists, otherwise it will be created.
 
 Requirements
 ------------
