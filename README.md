@@ -29,8 +29,9 @@ Usage:
     KONG_JWT: "<<KONG_JWT>>"
   roles:
     - role: kong_service
-      name: "testservice"
-      url: "http://httpbin.org"
+      service:
+        name: "testservice"
+        url: "http://httpbin.org"
 ```
 
 License
