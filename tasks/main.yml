@@ -8,7 +8,7 @@
 
 - name: Create service
   uri:
-    url: "{{KONG_ADMIN_URL}}/services/?jwt={{kong_jwt}}"
+    url: "{{KONG_ADMIN_URL}}/services/?jwt={{KONG_JWT}}"
     method: POST
     body:
       name: "{{service.name}}"
