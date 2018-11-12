@@ -11,8 +11,8 @@
     url: "{{KONG_ADMIN_URL}}/services/?jwt={{KONG_JWT}}"
     method: POST
     body:
-      name: "{{service.name}}"
-      url: "{{service.url}}"
+      name: "{{ service.name}}"
+      url: "{{service.url if defined}}"
     status_code: 201
     body_format: json
   when: service_result.status == 404
@@ -23,7 +23,7 @@
     method: PATCH
     body:
       name: "{{service.name}}"
-      url: "{{service.url}}"
+      url: "{{service.url if defined}}"
     body_format: json
     status_code: 200
   when: service_result.status == 200
