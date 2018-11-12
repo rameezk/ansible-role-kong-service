@@ -10,9 +10,7 @@
   uri:
     url: "{{KONG_ADMIN_URL}}/services/?jwt={{KONG_JWT}}"
     method: POST
-    body:
-      name: "{{ service.name}}"
-      url: "{{service.url if defined}}"
+    body: "{{ lookup('file','service.yaml') }}"
     status_code: 201
     body_format: json
   when: service_result.status == 404
@@ -21,9 +19,7 @@
   uri:
     url: "{{KONG_ADMIN_URL}}/services/{{service.name}}?jwt={{KONG_JWT}}"
     method: PATCH
-    body:
-      name: "{{service.name}}"
-      url: "{{service.url if defined}}"
+    body: "{{ lookup('file','service.yaml') }}"
     body_format: json
     status_code: 200
   when: service_result.status == 200
