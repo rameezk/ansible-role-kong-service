@@ -1,6 +1,32 @@
 {
-    "name": "{{ service.name }}"
-    {% if service.url is defined %}
+{% if service.name is defined  %}
+    "name": "{{ service.name }}",
+{% endif %}
+{% if service.protocol is defined  %}
+    "protocol": "{{ service.protocol }}",
+{% endif %}
+{% if service.host is defined  %}
+    "host": "{{ service.host }}",
+{% endif %}
+{% if service.port is defined  %}
+    "port": "{{ service.port }}",
+{% endif %}
+{% if service.path is defined  %}
+    "path": "{{ service.path }}",
+{% endif %}
+{% if service.retries is defined  %}
+    "retries": "{{ service.retries }}",
+{% endif %}
+{% if service.connect_timeout is defined  %}
+    "connect_timeout": "{{ service.connect_timeout }}",
+{% endif %}
+{% if service.write_timeout is defined  %}
+    "write_timeout": "{{ service.write_timeout }}",
+{% endif %}
+{% if service.read_timeout is defined  %}
+    "read_timeout": "{{ service.read_timeout }}",
+{% endif %}
+{% if service.url is defined  %}
     "url": "{{ service.url }}"
-    {% endif %}
+{% endif %}
 }
